@@ -1,0 +1,33 @@
+#map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    width: 40px; /* Ширина ячейки */
+    height: 40px; /* Высота ячейки */
+    border: 1px solid #ccc; /* Граница для визуализации */
+    box-sizing: border-box;
+}
+
+.wall {
+    background-color: #333; /* Цвет стен */
+}
+
+.finish {
+    background-color: yellow; /* Цель для ящиков */
+}
+
+.box {
+    background-color: orange; /* Цвет ящиков */
+}
+
+.man {
+    background-color: blue; /* Цвет игрока */
+}
