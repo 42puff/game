@@ -1,0 +1,143 @@
+html {
+    min-height: 100vh; 
+}
+
+body { 
+    background-image: linear-gradient(to right, #f0d8ab, #eec964); 
+    background-repeat: no-repeat;  
+    background-size: cover;  
+    margin: 0;  
+}
+
+#map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 110px;
+    right: 15%;
+    position: relative;
+}
+
+.floor {
+    border: 1px solid #ccc; 
+    background-image: url(textures/floor.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    width: 50px; 
+    height: 50px; 
+    box-sizing: border-box;
+}
+
+.wall {
+    background-image: url(textures/wall.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.finish {
+    border: 1px solid #ccc; 
+    background-image: url(textures/finish.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.box {
+    border: 1px solid #ccc; 
+    background-image: url(textures/box.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.man-on-finish{
+    background-image: url(textures/manonfinish.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.box-on-finish {
+    background-image: url(textures/boxonfinish.jpg),url(textures/man.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+
+.man {
+    border: 1px solid #ccc;
+    background-image: url(textures/man.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.victory-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #b97bcc, #238665);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    max-width: 80%;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.victory-message.hidden {
+    display: none;
+}
+
+.victory-message h2 {
+    margin-top: 0;
+    font-size: 2.5em;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.victory-message p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#restart-button {
+    background: linear-gradient(135deg, #dd937c, #c7364e);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.2em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#restart-button:hover {
+    background: #ff5252;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.blurred {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -60%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
