@@ -136,6 +136,19 @@ body {
     transition: filter 0.3s ease;
 }
 
+#timer {
+    position: fixed;
+    top: 12%;
+    right: 25%;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 100;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translate(-50%, -60%); }
     to { opacity: 1; transform: translate(-50%, -50%); }

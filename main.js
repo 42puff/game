@@ -73,6 +73,10 @@ function findManPosition(map) {
 
 
 function MoveMan(x, y) {
+    if (FirstMove) {
+        startTimer();
+        FirstMove = false;
+    }
     const currentX = manPosition.x + x;
     const currentY = manPosition.y + y;
     if (map[currentX][currentY] === 1) {
@@ -159,6 +163,7 @@ function winCheck() {
             }
         }
     }
+    stopTimer();
     showVictoryMessage();
     return true;
 }
@@ -169,6 +174,8 @@ function resetLevel() {
     map = JSON.parse(JSON.stringify(mapCopy));
     manPosition = findManPosition(map);
     renderMap();
+    resetTimer();
+    timerRunning = false;
 }
 
 
@@ -180,4 +187,38 @@ function showVictoryMessage() {
 function hideVictoryMessage() {
     victoryMessage.classList.add('hidden');
     gameArea.classList.remove('blurred');
+}
+
+let timeElapsed = 0;
+let timerRunning = false;
+let FirstMove = true;
+let timerInterval;
+
+function startTimer() {
+    if (!timerRunning) {
+        timerRunning = true;
+        if (timerInterval) {
+            clearInterval(timerInterval);
+        }
+        timerInterval = setInterval(updateTimer, 1000);
+    }
+}
+
+function updateTimer() {
+    if (timerRunning) {
+        timeElapsed++;
+        document.getElementById("timer").innerText = "Время прохождения: " + timeElapsed + " сек";
+    }
+}
+
+function stopTimer() {
+    timerRunning = false;
+    clearInterval(timerInterval);
+}
+
+function resetTimer() {
+    stopTimer();
+    timeElapsed = 0;
+    document.getElementById("timer").innerText = "Время прохождения: 0 сек";
+    isFirstMove = true; // Сбрасываем флаг при рестарте
 }
