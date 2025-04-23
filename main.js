@@ -1,3 +1,16 @@
+document.getElementById('start-button').addEventListener('click', function() {
+    document.querySelector('.start-screen').style.opacity = '0';
+    
+    setTimeout(() => {
+        document.querySelector('.start-screen').classList.add('hidden');
+        document.querySelector('.game-container').classList.remove('hidden');
+        
+        // Инициализация игры
+        resetLevel();
+        renderMap();
+    }, 500);
+});
+
 //Заполнение массива элементами
 
 let map = [
@@ -18,7 +31,10 @@ let map = [
 ];
 
 let moveCount = 0;
-
+let timeElapsed = 0;
+let timerRunning = false;
+let FirstMove = true;
+let timerInterval;
 let gameEnd = false;
 
 const gameArea = document.querySelector('#map'); // Выбираем элемент с селектором 'map'
@@ -188,6 +204,8 @@ function resetLevel() {
     timerRunning = false;
     moveCount = 0;
     document.getElementById("move-counter").innerText = "Сделанно ходов: 0";
+    gameEnd = false;
+    FirstMove = true;
 }
 
 
@@ -206,11 +224,6 @@ function hideVictoryMessage() {
     document.getElementById("timer").classList.remove('blurred');
     document.getElementById("move-counter").classList.remove('blurred');
 }
-
-let timeElapsed = 0;
-let timerRunning = false;
-let FirstMove = true;
-let timerInterval;
 
 function startTimer() {
     if (!timerRunning) {
