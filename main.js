@@ -17,6 +17,10 @@ let map = [
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 
+let moveCount = 0;
+
+let gameEnd = false;
+
 const gameArea = document.querySelector('#map'); // Выбираем элемент с селектором 'map'
 
 let mapCopy = JSON.parse(JSON.stringify(map)); // сохранение копии карты
@@ -28,6 +32,8 @@ victoryMessage.className = 'victory-message hidden';
 victoryMessage.innerHTML = 
     `<h2>Поздравляем!</h2>
     <p>Вы успешно завершили уровень!</p>
+    <p>Затрачено времени: <span id="final-time">0</span> сек</p>
+    <p>Сделано ходов: <span id="final-moves">0</span></p>
     <button id="restart-button">Играть снова</button>`;
 document.body.appendChild(victoryMessage);
 
@@ -38,6 +44,7 @@ document.getElementById('restart-button')?.addEventListener('click', resetLevel)
 let i = 0;
 const span = document.querySelector('.lesson');
 document.addEventListener('keydown', function(event) {
+    if(gameEnd) return;
     switch(event.code){
         case 'ArrowUp':
         case 'KeyW':
@@ -73,6 +80,8 @@ function findManPosition(map) {
 
 
 function MoveMan(x, y) {
+    moveCount++;
+    document.getElementById('move-counter').innerText = 'Сделанно ходов:' + moveCount;
     if (FirstMove) {
         startTimer();
         FirstMove = false;
@@ -163,6 +172,7 @@ function winCheck() {
             }
         }
     }
+    gameEnd = true;
     stopTimer();
     showVictoryMessage();
     return true;
@@ -176,17 +186,25 @@ function resetLevel() {
     renderMap();
     resetTimer();
     timerRunning = false;
+    moveCount = 0;
+    document.getElementById("move-counter").innerText = "Сделанно ходов: 0";
 }
 
 
 function showVictoryMessage() {
+    document.getElementById("final-time").innerText = timeElapsed;
+    document.getElementById("final-moves").innerText = moveCount;
     victoryMessage.classList.remove('hidden');
     gameArea.classList.add('blurred');
+    document.getElementById("timer").classList.add('blurred');
+    document.getElementById("move-counter").classList.add('blurred');
 }
 
 function hideVictoryMessage() {
     victoryMessage.classList.add('hidden');
     gameArea.classList.remove('blurred');
+    document.getElementById("timer").classList.remove('blurred');
+    document.getElementById("move-counter").classList.remove('blurred');
 }
 
 let timeElapsed = 0;
@@ -220,5 +238,5 @@ function resetTimer() {
     stopTimer();
     timeElapsed = 0;
     document.getElementById("timer").innerText = "Время прохождения: 0 сек";
-    isFirstMove = true; // Сбрасываем флаг при рестарте
+    FirstMove = true; // Сбрасываем флаг при рестарте
 }

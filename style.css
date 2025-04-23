@@ -85,7 +85,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: linear-gradient(135deg, #b97bcc, #238665);
+    background: linear-gradient(135deg, #9ce988, #1e9b4e);
     color: white;
     padding: 30px;
     border-radius: 15px;
@@ -102,7 +102,7 @@ body {
 
 .victory-message h2 {
     margin-top: 0;
-    font-size: 2.5em;
+    font-size: 3em;
     color: #fff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -111,6 +111,11 @@ body {
     font-size: 1.5em;
     margin-bottom: 20px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.victory-message span {
+    color: #dd8367;
+    font-size: 1.7em;
 }
 
 #restart-button {
@@ -139,14 +144,31 @@ body {
 #timer {
     position: fixed;
     top: 12%;
+    right: 23%; 
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(53, 53, 23, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 100;
+}
+
+#move-counter{
+    position: fixed;
+    top: 18%;
     right: 23%;
     font-size: 25px;
     font-weight: bold;
     color: white;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(53, 53, 23, 0.5);
     padding: 5px 10px;
     border-radius: 5px;
     z-index: 100;
+}
+
+.hidden {
+    display: none !important;
 }
 
 @keyframes fadeIn {
