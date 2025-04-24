@@ -48,6 +48,28 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
+.game-button {
+    position: fixed;
+    top: 24%; 
+    right: 23%;
+    padding: 8px 15px;
+    font-size: 1rem;
+    background-color: rgba(53, 53, 23, 0.5);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+.game-button:hover {
+    background-color: rgba(53, 53, 23, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
 #map {
     display: flex;
     flex-direction: column;

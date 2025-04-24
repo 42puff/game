@@ -11,6 +11,9 @@ document.getElementById('start-button').addEventListener('click', function() {
     }, 500);
 });
 
+const restartLevelButton = document.getElementById('restart-level-button');
+restartLevelButton.addEventListener('click', resetLevel);
+
 //Заполнение массива элементами
 
 let map = [
@@ -216,6 +219,7 @@ function showVictoryMessage() {
     gameArea.classList.add('blurred');
     document.getElementById("timer").classList.add('blurred');
     document.getElementById("move-counter").classList.add('blurred');
+    document.getElementById("restart-level-button").classList.add('blurred')
 }
 
 function hideVictoryMessage() {
@@ -223,6 +227,7 @@ function hideVictoryMessage() {
     gameArea.classList.remove('blurred');
     document.getElementById("timer").classList.remove('blurred');
     document.getElementById("move-counter").classList.remove('blurred');
+    document.getElementById("restart-level-button").classList.remove('blurred')
 }
 
 function startTimer() {
